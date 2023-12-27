@@ -12,7 +12,7 @@ const SaveVoucher = expressAsyncHandler(async (req, res) => {
 
 
     const usernameFromEmail = email.split('@')[0];
-    const userDatabaseName = `user_${usernameFromEmail}`;
+    const userDatabaseName = `2306_${usernameFromEmail}`;
     const createdAt = moment().tz('Asia/Manila').format('YYYY-MM-DD HH:mm:ss');
 
   

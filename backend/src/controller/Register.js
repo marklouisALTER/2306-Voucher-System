@@ -27,8 +27,8 @@ const Register = expressAsyncHandler(async (req, res) => {
     const hash = bcrypt.hashSync(password, salt);
     const signatureData = signature.split(',')[1];
     const decodedSignature = Buffer.from(signatureData, 'base64');
-    const uniqueId = uuidv4();
-
+    const id = uuidv4();
+    const uniqueId = id.replace(/-/g, '').substring(0, 12);
     try {
         const usernameFromEmail = emailAddress.split('@')[0];
         const userDatabaseName = `2306_${usernameFromEmail}`;

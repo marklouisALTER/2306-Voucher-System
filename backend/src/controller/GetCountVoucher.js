@@ -11,7 +11,7 @@ const GetCountVoucher = expressAsyncHandler(async (req, res) => {
     const { email } = req.params;     
     
     const usernameFromEmail = email.split('@')[0];
-    const userDatabaseName = `user_${usernameFromEmail}`;
+    const userDatabaseName = `2306_${usernameFromEmail}`;
     
     const userDatabasePool = getUserDatabaseConnection(usernameFromEmail);
 
@@ -28,7 +28,7 @@ const GetCountVoucher = expressAsyncHandler(async (req, res) => {
         }
     
         const rowCount = result[0].count;
-    
+      
         res.header('Cache-Control', 'no-store');
         res.status(200).json({ title: 'Success', message: 'Retrieved Successful', rowCount });
       } catch (err) {
