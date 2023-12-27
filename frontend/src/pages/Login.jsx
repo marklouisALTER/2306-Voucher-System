@@ -77,7 +77,7 @@ export const Login = () => {
 
     <div className='w-full h-screen flex flex-col justify-center px-[1rem]'>
         <div className='flex flex-col items-center gap-5'>
-          <h1 className='text-2xl font-primary text-center'>WELCOME TO <span className='text-primary font-semibold'>2307</span> VOUCHER SYSTEM</h1>
+          <h1 className='text-2xl font-primary text-center'>WELCOME TO <span className='text-primary font-semibold'>2306</span> VOUCHER SYSTEM</h1>
           <h1 className='font-secondary text-xl md:text-2xl text-center'>Login to your Account</h1>
           {location.state?.message &&
             <h1 className='font-secondary text-xl md:text-xl font-bold text-center text-red-500'>{location.state.message}</h1>

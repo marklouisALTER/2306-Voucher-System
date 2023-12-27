@@ -6,7 +6,7 @@ const RetrievePartyInfo = expressAsyncHandler(async (req, res) => {
     const { usernum } = req.body;
     // console.log(userEmail);
 
-    mainConnection.query('SELECT * FROM tbl_users WHERE user_num = ?', [usernum], (err, result) => {
+    mainConnection.query('SELECT * FROM tbl_user WHERE user_num = ?', [usernum], (err, result) => {
         if (err) {
             res.status(500).json({ title: 'Error', message: err.message, isSuccess: false });
         }

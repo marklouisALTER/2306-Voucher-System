@@ -34,7 +34,7 @@ const Register = expressAsyncHandler(async (req, res) => {
         const userDatabaseName = `user_${usernameFromEmail}`;
 
         await connection.mainConnection.query(
-            'INSERT INTO tbl_users (user_num, user_type,  firstname, middlename, lastname, tin, registered_address, zip_code, foreign_address, email_address, password, signature, createdAt) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+            'INSERT INTO tbl_user (user_num, user_type,  firstname, middlename, lastname, tin, registered_address, zip_code, foreign_address, email_address, password, signature, createdAt) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
             [uniqueId, usertype, firstname, middlename, lastname, tin, registeredAddress, zipCode, foreignAddress, emailAddress, hash, decodedSignature, createdAt]
         );
         
@@ -93,7 +93,7 @@ const Register = expressAsyncHandler(async (req, res) => {
 
         // Voucher Table
         await userDatabasePool.query(`
-            CREATE TABLE IF NOT EXISTS user_voucher (
+            CREATE TABLE IF NOT EXISTS user_voucher_2306 (
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 control_no VARCHAR(250) DEFAULT '1000A' NOT NULL,            
                 voucher BLOB,

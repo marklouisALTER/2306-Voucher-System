@@ -21,7 +21,7 @@ const GetCountVoucher = expressAsyncHandler(async (req, res) => {
     await userDatabasePool.query(`USE ${userDatabaseName}`);
 
     try {
-        const result = await userDatabasePool.query('SELECT COUNT(*) as count FROM user_voucher');
+        const result = await userDatabasePool.query('SELECT COUNT(*) as count FROM user_voucher_2306');
     
         if (!result || result.length === 0) {
           return res.status(404).send('No vouchers found');

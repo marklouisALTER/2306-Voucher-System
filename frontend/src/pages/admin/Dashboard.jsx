@@ -65,7 +65,7 @@ export const Dashboard = () => {
     }
     getVouchers()
   }, []);
-  
+  console.log(voucherData);
   return (
     <div className='w-full px-5 md:px-10'>
       <h1 className='text-4xl text-primary'>Dashboard</h1>
@@ -88,7 +88,7 @@ export const Dashboard = () => {
               <h1 className='text-white font-primary'>Recent Voucher</h1>
             </div>
             
-              {voucherData && voucherData.length > 0 ? (
+              {voucherData[0].control_no !== '' ? (
                 <div className='w-full max-h-[55rem] border-2 overflow-y-scroll p-2'>
                   {voucherData.map((items, index) => (
                     
@@ -110,7 +110,7 @@ export const Dashboard = () => {
                 >
                   <Link
                     to={'/admin/voucher'}
-                    className="flex items-center gap-3 px-3 py-2 transition-all delay-100 ease-in-out hover:bg-onMouse bg-blue-600 hover:bg-blue-700 rounded-md"
+                    className="flex items-center gap-3 px-3 py-2 transition-all delay-100 ease-in-out hover:bg-onMouse bg-blue-600 hover:bg-blue-800 rounded-md"
                   >
                     <h1 className="text-white transition-all delay-100 ease-in-out font-secondary text-sm md:text-md lg:text-md text-primary group-hover:text-secondary">
                       Issue Now!

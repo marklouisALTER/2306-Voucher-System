@@ -18,8 +18,7 @@ const LineChart = ({voucherData}) => {
       const index = uniqueMonths.indexOf(month);
       dataCount[index]++;
     });
-    
-    console.log(dataCount);
+        
     const data = {
       labels: labels,
       datasets: [
