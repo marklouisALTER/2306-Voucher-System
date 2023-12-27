@@ -1,159 +1,153 @@
 import React from 'react';
 import { Text, View, Image, } from '@react-pdf/renderer';
 import styles from '../style'
+import moment from 'moment';
 
-import bir from '../../../assets/logo.jpg';
 
 import DateView from './DateView';
 const Header = ({controlNo}) => {
 
-    const initialControlNo = 1000 + controlNo + 1;
+    const initialControlNo = 1000 + controlNo;
     const stringControlNo = initialControlNo + 'A';
 
-    const currentDate = new Date();
-    const currentMonth = currentDate.getMonth() + 1;
-    const currentDay = currentDate.getDate();
+    const currentDate = moment();
+    const month = currentDate.format('MM').split('');
+    const day = currentDate.format('DD');
+    const year = currentDate.format('YYYY').split('');
+    // const currentMonth = currentDate.getMonth() + 1;
+    // const currentDay = currentDate.getDate();
 
-    const currentHour = currentDate.getHours();    
-    const currentMinute = currentDate.getMinutes().toString().padStart(2, '0');
+    // const currentHour = currentDate.getHours();    
+    // const currentMinute = currentDate.getMinutes().toString().padStart(2, '0');
     
     return (
         <>
             <View style={{
-                justifyContent: 'space-between',                
-                flexDirection: 'row',
-                
+                position: 'absolute',
+                top: 40,
+                right: 50,  // Change left to right
             }}>
-                <Text style={styles.bold}> {' ▶ '}  DLN: </Text>
-                <View style={{
-                    flexDirection: 'row',                
+                <View style={{ flexDirection: 'row' }}>
+                    <Text style={{ fontSize: 12 }}> Internal Control No. </Text>
+                    <Text style={{ color: 'red', fontSize: 12 }}> {stringControlNo} </Text>
+                </View>
+            </View>
+
+            <View style={{
+                position: 'absolute',
+                top: 104.6,
+                left:159.5,
+                width: 22,
+                height: 12,                
                 }}>
-                    <Text style={{fontSize:12}}> Internal Control No.  </Text>
-                    <Text style={{color:'red',fontSize:12}}> {stringControlNo} </Text>
-                </View>
-            </View>
-
-            <View style={styles.header}>              
-              
-                <View style={{flexDirection:'column', padding:10,}}>
-                    <View style={{
-                    flexDirection: "row",
-                    justifyContent:'space-between',
-                    marginBottom: 30,}}>                                            
-                        <View style={styles.logoContainer}>                        
-                        <Image src={bir}/>
-                        </View>
-                        <View style={{flexDirection:'column', marginLeft:10}}>
-                        <Text style={{fontSize:8,marginBottom:8}}>
-                            Republika ng Pilipinas
-                        </Text>
-                        <Text style={{fontSize:8,marginBottom:8}}>
-                            Kagawaran ng Pananalapi
-                        </Text>
-                        <Text style={{fontSize:9}}>
-                            Kawanihan ng Rentas Internas
-                        </Text>
+                    <View style={styles.box}>
+                        <View style={styles.lineContainer}>                                    
+                            <View style={styles.transparentLine} />
+                            <Text style={{fontSize:10,marginTop:15}}> {month[0]}</Text>
+                            <View style={styles.vline} />                
+                            <Text style={{fontSize:10,marginTop:15}}> {month[1]}</Text>        
+                            <View style={styles.transparentLine} />
                         </View>
                     </View>
-
-                    <Text style={{ fontSize: 12, fontStyle: 'italic', fontFamily: 'Times-Roman' }}>
-                        (Excluding Compensation Income)
-                    </Text>
-                </View>
-              
-                <View style={{
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    
-                    
+            </View>
+            <View style={{
+                position: 'absolute',
+                top: 104.6,
+                left:182.5,
+                width: 22,
+                height: 12,                
                 }}>
-                    <Text style={{fontSize:15, fontWeight: 'bold'}}>Certificate of Income</Text>
-                    <Text style={{fontSize:15, fontWeight: 'bold'}}>Payment Not Subject</Text>
-                    <Text style={{fontSize:15, fontWeight: 'bold'}}>to Withholding Tax</Text>
-                    
-                </View>
-                {/* THIRD COLUMN */}
-                <View style={{flexDirection:'column',padding:5,marginRight:10,}}>
-                    <View style={{flexDirection:'column'}}>
-                        <Text style={{fontSize:9}}>BIR Form No.</Text>
-                        <Text style={{fontSize:26}}>2304</Text>
-                        <Text style={{fontSize:9}}>July 1999(ENCS)</Text>
+                    <View style={styles.box}>
+                        <View style={styles.lineContainer}>                                    
+                        <View style={styles.transparentLine} />
+                            <Text style={{fontSize:10,marginTop:15}}> {day[0]}</Text>
+                            <View style={styles.vline} />
+                            <Text style={{fontSize:10,marginTop:15}}> {day[1]}</Text>       
+                            <View style={styles.transparentLine} />
+                        </View>
                     </View>
-                    <Text style={{fontSize:13}}>Original Copy</Text>
-                </View>
+            </View>
+            <View style={{
+                position: 'absolute',
+                top: 104.6,
+                left:205.5,
+                width: 45,
+                height: 12,                
+                }}>
+                    <View style={styles.box}>
+                        <View style={styles.lineContainer}>                                    
+                        <View style={styles.transparentLine} />
+                        <View style={styles.transparentLine} />
+                            <Text style={{fontSize:10,marginTop:15}}> {year[0]}</Text>
+                            <View style={styles.vline} />
+                            <Text style={{fontSize:10,marginTop:15}}> {year[1]}</Text>
+                            <View style={styles.vline} />
+                            <Text style={{fontSize:10,marginTop:15}}> {year[2]}</Text>
+                            <View style={styles.vline} />
+                            <Text style={{fontSize:10,marginTop:15}}> {year[3]}</Text>
+                            <View style={styles.transparentLine} />
+                        </View>
+                    </View>
+            </View>
+            
+
+            <View style={{
+                position: 'absolute',
+                top: 104.6,
+                left:378.5,
+                width: 22,
+                height: 12,                
+                }}>
+                    <View style={styles.box}>
+                        <View style={styles.lineContainer}>                                    
+                            <View style={styles.transparentLine} />
+                            <Text style={{fontSize:10,marginTop:15}}> {month[0]}</Text>
+                            <View style={styles.vline} />                
+                            <Text style={{fontSize:10,marginTop:15}}> {month[1]}</Text>        
+                            <View style={styles.transparentLine} />
+                        </View>
+                    </View>
+            </View>
+             <View style={{
+                position: 'absolute',
+                top: 104.6,
+                left:401.5,
+                width: 22,
+                height: 12,                
+                }}>
+                    <View style={styles.box}>
+                        <View style={styles.lineContainer}>                                    
+                        <View style={styles.transparentLine} />
+                            <Text style={{fontSize:10,marginTop:15}}> {day[0]}</Text>
+                            <View style={styles.vline} />
+                            <Text style={{fontSize:10,marginTop:15}}> {day[1]}</Text>       
+                            <View style={styles.transparentLine} />
+                        </View>
+                    </View>
+            </View>
+            <View style={{
+                position: 'absolute',
+                top: 104.6,
+                left:424.5,
+                width: 45,
+                height: 12,                
+                }}>
+                    <View style={styles.box}>
+                        <View style={styles.lineContainer}>                                    
+                        <View style={styles.transparentLine} />
+                        <View style={styles.transparentLine} />
+                            <Text style={{fontSize:10,marginTop:15}}> {year[0]}</Text>
+                            <View style={styles.vline} />
+                            <Text style={{fontSize:10,marginTop:15}}> {year[1]}</Text>
+                            <View style={styles.vline} />
+                            <Text style={{fontSize:10,marginTop:15}}> {year[2]}</Text>
+                            <View style={styles.vline} />
+                            <Text style={{fontSize:10,marginTop:15}}> {year[3]}</Text>
+                            <View style={styles.transparentLine} />
+                        </View>
+                    </View>
             </View>
 
-            <View style={styles.subHeader}>
-                <View style={{flexDirection:'row',}}>
-                    <View style={{flexDirection:'row',justifyContent:'center', alignItems:'center'}}>
-                        <Text style={styles.normal}> 1 </Text>
-                        <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
-                            <Text style={styles.normal}> For the year </Text>
-                            <Text style={styles.normal}> ( YYYY )</Text>
-                        </View>
-                    </View>
-                        
-                    <View style={{flexDirection:'row',marginLeft:10, justifyContent:'center', alignItems:'center'}}>
-                        <View style={{flexDirection:'col',justifyContent:'space-between',marginRight:5}}>
-                            <Text style={styles.normal}> 1 </Text>
-                            <Text style={styles.normal}> {'>'} </Text>
-                        </View>
-                        <DateView/>
-                    </View>
-
-                    <View style={{flexDirection:'row',justifyContent:'center', alignItems:'center',
-                        marginLeft:30}}>                        
-                        <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
-                            <Text style={{fontSize:9}}> Month </Text>                            
-                        </View>
-                    </View>
-                        
-                    <View style={{flexDirection:'row',marginLeft:10, justifyContent:'center', alignItems:'center'}}>                        
-                        <View style={styles.input}>
-                            <View style={styles.box}>
-                                <Text style={{marginTop:2.5, marginLeft:10,  fontSize:11}}> {currentMonth} </Text>
-                            </View>
-                        </View>
-                    </View>
-
-                    <View style={{flexDirection:'row',justifyContent:'center', alignItems:'center',
-                        marginLeft:30}}>                        
-                        <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
-                            <Text style={{fontSize:9}}> Day </Text>                            
-                        </View>
-                    </View>
-                        
-                    <View style={{flexDirection:'row',marginLeft:10, justifyContent:'center', alignItems:'center'}}>                        
-                        <View style={styles.input}>
-                            <View style={styles.box}>
-                                <Text style={{marginTop:2.5, marginLeft:10,  fontSize:11}}> {currentDay} </Text>
-                            </View>
-                        </View>
-                    </View>
-
-                    <View style={{flexDirection:'row',justifyContent:'center', alignItems:'center',
-                        marginLeft:30}}>                        
-                        <View style={{flexDirection:'column',justifyContent:'space-evenly'}}>
-                            <Text style={{fontSize:9}}> Time </Text>                            
-                        </View>
-                    </View>
-                        
-                    <View style={{flexDirection:'row',marginLeft:10, justifyContent:'center', alignItems:'center'}}>                        
-                        <View style={styles.input}>
-                            <View style={styles.box}>
-                            <Text style={{marginTop:2.5, marginLeft:10,  fontSize:11}}> 
-                                {currentHour}:{currentMinute}
-                            </Text>
-                            
-                            </View>
-                        </View>
-                    </View>
-                </View>
-               
-                   
-               
-            </View>
         </>
     )
 }

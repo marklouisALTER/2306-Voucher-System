@@ -126,10 +126,15 @@ const styles = StyleSheet.create({
   
     // INPUT BOX
       smallInput: {
-        width: 40,
-        height: 20,
-        border: 1,
-        borderColor: 'black',
+        position: 'absolute',
+        top: 130.6,
+        left:206,
+        width: 33,
+        height: 12,
+        // width: 40,
+        // height: 20,
+        // border: 1,
+        // borderColor: 'black',
         backgroundColor: 'white',
       },
       input: {
@@ -182,10 +187,10 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
       },
       vline: {
-        width: 1,
+        width: 0.5,
         height: 5, // Adjust the height of each line
         backgroundColor: 'black',
-        marginTop:8,
+        marginTop:22,
         
       },
       transparentLine: {

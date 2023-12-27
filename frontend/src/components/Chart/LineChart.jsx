@@ -35,7 +35,7 @@ const LineChart = ({voucherData}) => {
         plugins: {
           title: {
             display: true,
-            text: "Number of your issued BIR FORM 2304",
+            text: "Number of your issued BIR FORM 2306",
           },
           legend: {
             position: "bottom",

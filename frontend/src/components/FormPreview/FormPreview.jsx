@@ -49,16 +49,16 @@ export const FormPreview = ({ userInfo, partyInfo, taxPayerParty, done }) => {
         data.append('control_no', stringControlNo);
         data.append('file', pdfBlob);
         
-        try{
-            const response = await axios.post('http://localhost:4000/api/save_voucher', data)
-            if(response.status === 200){
-              setSuccess(true);
-            }
+        // try{
+        //   const response = await axios.post('http://localhost:4000/api/save_voucher', data)
+        //   if(response.status === 200){
+        //     setSuccess(true);
+        //   }
                 
-            }catch(err){
-              console.error('Error saving blob to the database:', err);
-              setSuccess(false)
-            }
+        // }catch(err){
+        //   console.error('Error saving blob to the database:', err);
+        //   setSuccess(false)
+        // }
        
       }
     };
@@ -67,13 +67,11 @@ export const FormPreview = ({ userInfo, partyInfo, taxPayerParty, done }) => {
   }, [pdfBlob]);
   useEffect(() => {
     
-    setLoading(!done);
-    // setLoading(false)
+    // setLoading(!done);
+    setLoading(false)
   }, [done]);
 
-
-
-  console.log(partyInfo);
+  
   return (
     <>           
       <Card
@@ -87,7 +85,7 @@ export const FormPreview = ({ userInfo, partyInfo, taxPayerParty, done }) => {
             taxPayerParty={taxPayerParty}
             controlNo={controlNo} />
         </PDFViewer>
-        <PDFDownloadLink 
+        {/* <PDFDownloadLink 
           document={
             <PDFPreview 
               userInfo={userInfo} 
@@ -95,7 +93,7 @@ export const FormPreview = ({ userInfo, partyInfo, taxPayerParty, done }) => {
               taxPayerParty={taxPayerParty} 
             />} fileName="somename.pdf">
           {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download now!')}
-        </PDFDownloadLink>
+        </PDFDownloadLink> */}
 
         {/* <BlobProvider document={
           <PDFPreview 
