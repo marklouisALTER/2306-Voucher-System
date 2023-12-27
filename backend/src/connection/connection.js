@@ -11,7 +11,7 @@ const mainConnection = mysql.createPool({
 });
 
 const getUserDatabaseConnection = (username) => {
-    const userDatabaseName = `user_${username.split('@')[0]}`;
+    const userDatabaseName = `2306_${username.split('@')[0]}`;
     const pool = mysql.createPool({
         connectionLimit: 10, 
         host: process.env.DB_HOST,

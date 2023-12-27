@@ -31,7 +31,7 @@ const Register = expressAsyncHandler(async (req, res) => {
 
     try {
         const usernameFromEmail = emailAddress.split('@')[0];
-        const userDatabaseName = `user_${usernameFromEmail}`;
+        const userDatabaseName = `2306_${usernameFromEmail}`;
 
         await connection.mainConnection.query(
             'INSERT INTO tbl_users (user_num, user_type,  firstname, middlename, lastname, tin, registered_address, zip_code, foreign_address, email_address, password, signature, createdAt) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
@@ -47,7 +47,7 @@ const Register = expressAsyncHandler(async (req, res) => {
         }
 
         console.log(`Attempting to create database: ${userDatabaseName}`);
-        // await userDatabasePool.query(`CREATE DATABASE IF NOT EXISTS ${userDatabaseName}`);
+        
         await userDatabasePool.query(`USE ${userDatabaseName}`);
 
         await userDatabasePool.query(`
