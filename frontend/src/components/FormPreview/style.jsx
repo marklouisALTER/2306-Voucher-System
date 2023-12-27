@@ -89,11 +89,11 @@ const styles = StyleSheet.create({
     },
     inputText: {
       fontSize:10,
-      color:'black',
-      zIndex: '10',
-      height: 20,
-      marginLeft:2,
-      marginTop:1,
+      // color:'black',
+      // zIndex: '10',
+      // height: 20,
+      // marginLeft:2,
+      // marginTop:1,
     },
     inputText1: {
       fontSize:12,
@@ -153,11 +153,18 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
       },
       regtangleinput: {
-        width: '100%',
-        height: 20,
-        border: 1,
-        borderColor: 'black',
-        backgroundColor: 'white',
+
+        position: 'absolute',
+        top: 153.7,
+        left:60,
+        width: 488,
+        height: 12,
+
+        // width: '100%',
+        // height: 20,
+        // border: 1,
+        // borderColor: 'black',
+        // backgroundColor: 'white',
       },
       rectanglebox: {
         width: '100%',

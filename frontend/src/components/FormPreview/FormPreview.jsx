@@ -21,18 +21,18 @@ export const FormPreview = ({ userInfo, partyInfo, taxPayerParty, done }) => {
   useEffect(() => {
     const getCountVoucher = async () => {
 
-      try {
-        const response =  await axios.get(`http://localhost:4000/api/get_count_voucher/${getUser()}`);
+      // try {
+      //   const response =  await axios.get(`http://localhost:4000/api/get_count_voucher/${getUser()}`);
 
-        if (response.status === 200) {
-          const {data} = response
+      //   if (response.status === 200) {
+      //     const {data} = response
           
-          setControlNo(data.rowCount)
+      //     setControlNo(data.rowCount)
           
-        }
-      } catch(err) {
-        console.log('Something went wrong', err);
-      }
+      //   }
+      // } catch(err) {
+      //   console.log('Something went wrong', err);
+      // }
     }
 
     getCountVoucher()
@@ -49,16 +49,16 @@ export const FormPreview = ({ userInfo, partyInfo, taxPayerParty, done }) => {
         data.append('control_no', stringControlNo);
         data.append('file', pdfBlob);
         
-        // try{
-        //   const response = await axios.post('http://localhost:4000/api/save_voucher', data)
-        //   if(response.status === 200){
-        //     setSuccess(true);
-        //   }
+        try{
+          const response = await axios.post('http://localhost:4000/api/save_voucher', data)
+          if(response.status === 200){
+            setSuccess(true);
+          }
                 
-        // }catch(err){
-        //   console.error('Error saving blob to the database:', err);
-        //   setSuccess(false)
-        // }
+        }catch(err){
+          console.error('Error saving blob to the database:', err);
+          setSuccess(false)
+        }
        
       }
     };

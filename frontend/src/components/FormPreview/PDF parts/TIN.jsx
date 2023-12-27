@@ -3,7 +3,7 @@ import { Document, Page, Text, View, StyleSheet, PDFViewer, Image } from '@react
 
 import styles from '../style'
 
-const TINDisplay = ({source, sourceType}) => {
+const TINDisplay = ({source, sourceType,style}) => {
     
     // const tinDigits = sourceType === 1 ? source.info.tin.replace(/-/g, '').split('')
     // : source.tin.replace(/-/g, '').split('');
@@ -19,17 +19,10 @@ const TINDisplay = ({source, sourceType}) => {
     for (let i = 0; i < tinDigits.length; i += 3) {        
       tinChunks.push(tinDigits.slice(i, i + 3));
     }
-    console.log(tinChunks);
-    
+
     return (
         <>          
-            <View style={{
-                position: 'absolute',
-                top: 131.3,
-                left:206,
-                width: 33,
-                height: 12,             
-                }}>
+            <View style={style[0]}>
                     <View style={styles.box}>
                         <View style={styles.lineContainer}>                                    
                         <View style={styles.transparentLine} />
@@ -43,13 +36,7 @@ const TINDisplay = ({source, sourceType}) => {
                     </View>
             </View>
 
-            <View style={{
-                position: 'absolute',
-                top: 131.4,
-                left:251.5,
-                width: 33,
-                height: 12,             
-                }}>
+            <View style={style[1]}>
                     <View style={styles.box}>
                         <View style={styles.lineContainer}>                                    
                         <View style={styles.transparentLine} />
@@ -63,13 +50,7 @@ const TINDisplay = ({source, sourceType}) => {
                     </View>
             </View>
 
-            <View style={{
-                position: 'absolute',
-                top: 131.4,
-                left:297.5,
-                width: 33,
-                height: 12,             
-                }}>
+            <View style={style[2]}>
                     <View style={styles.box}>
                         <View style={styles.lineContainer}>                                    
                         <View style={styles.transparentLine} />
