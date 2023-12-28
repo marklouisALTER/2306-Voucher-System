@@ -10,18 +10,28 @@ const ZipCode = ({source, sourceType}) => {
     
     return (
     
-        <View style={styles.box}>
-          <View style={styles.lineContainer}>
-            <View style={styles.transparentLine} />
-            {zipCode.map((digit, index) => (
-              <React.Fragment key={index}>
-                <Text style={styles.inputText1}>{digit}</Text>
-                {index !== 3 && <View style={styles.vline} />}
-              </React.Fragment>
-            ))}
-            <View style={styles.transparentLine} />
-          </View>
-        </View>
+      <View style={{
+        position: 'absolute',
+        top: 179.8,
+        left:506,
+        width: 40,
+        height: 12,                
+        }}>
+            <View style={styles.box}>
+                <View style={styles.lineContainer}>                                    
+                <View style={styles.transparentLine} />
+                <View style={styles.transparentLine} />
+                    <Text style={{fontSize:10,marginTop:15}}> {zipCode[0]}</Text>
+                    <View style={styles.vline} />
+                    <Text style={{fontSize:10,marginTop:15}}> {zipCode[1]}</Text>
+                    <View style={styles.vline} />
+                    <Text style={{fontSize:10,marginTop:15}}> {zipCode[2]}</Text>
+                    <View style={styles.vline} />
+                    <Text style={{fontSize:10,marginTop:15}}> {zipCode[3]}</Text>
+                    <View style={styles.transparentLine} />
+                </View>
+            </View>
+    </View>
     
     );
 }

@@ -24,26 +24,34 @@ const MyPDFDocument = ({userInfo, partyInfo, taxPayerParty, controlNo}) => {
       <Page size="A4" style={styles.page}>        
         <Image src={bir}/>            
         <Header controlNo={controlNo}/>
-        {/* {taxPayerParty.type === 'Payee' ?   */}
+        
+        {taxPayerParty.type === 'Payee' ?  
           <TINDisplay source={partyInfo} sourceType={1} style={payeeStyle}/> 
-        {/* : 
+        : 
           <TINDisplay source={userInfo} sourceType={0} style={payeeStyle}/>  
-        } */}
+        } 
         <View style={{position: 'absolute',
         top: 153.7,
         left:60,
         width: 488,
         height: 12,}}>
                 
-          {/* {taxPayerParty.type === 'Payee'  ? ( */}
+          {taxPayerParty.type === 'Payee'  ? (
+            taxPayerParty.class === 'individual' ? (
               <Text style={styles.inputText}>
-                Manuel Marin
+                {`${partyInfo.firstname} ${partyInfo.middlename} ${partyInfo.lastname}`}
               </Text>
-          {/* ): (
+            ): (
+              <Text style={styles.inputText}>
+                {`${partyInfo.payor_name}`}
+              </Text>
+            )
+              
+          ): (
               <Text style={styles.inputText}>
                 {`${userInfo.firstname} ${userInfo.middlename} ${userInfo.lastname}`}
               </Text>
-          )} */}
+          )}
         </View>
 
         <View style={{position: 'absolute',
@@ -52,45 +60,24 @@ const MyPDFDocument = ({userInfo, partyInfo, taxPayerParty, controlNo}) => {
         width: 439,
         height: 12,}}>
                 
-          {/* {taxPayerParty.type === 'Payee'  ? ( */}
+          {taxPayerParty.type === 'Payee'  ? (
               <Text style={styles.inputText}>
-                dito sa tabi tabi
+                {partyInfo.address}
               </Text>
-          {/* ): (
+          ): (
               <Text style={styles.inputText}>
-                {`${userInfo.firstname} ${userInfo.middlename} ${userInfo.lastname}`}
+                {userInfo.registered_address}
               </Text>
-          )} */}
+          )} 
         </View>
       
-        <View style={{
-            position: 'absolute',
-            top: 179.8,
-            left:506,
-            width: 40,
-            height: 12,                
-            }}>
-                <View style={styles.box}>
-                    <View style={styles.lineContainer}>                                    
-                    <View style={styles.transparentLine} />
-                    <View style={styles.transparentLine} />
-                        <Text style={{fontSize:10,marginTop:15}}> {1}</Text>
-                        <View style={styles.vline} />
-                        <Text style={{fontSize:10,marginTop:15}}> {3}</Text>
-                        <View style={styles.vline} />
-                        <Text style={{fontSize:10,marginTop:15}}> {4}</Text>
-                        <View style={styles.vline} />
-                        <Text style={{fontSize:10,marginTop:15}}> {5}</Text>
-                        <View style={styles.transparentLine} />
-                    </View>
-                </View>
-        </View>
+        
 
-        {/* {taxPayerParty.type === 'Payee' ?   */}
-        <TINDisplay source={partyInfo} sourceType={1} style={payorStyle}/> 
-        {/* : 
+        {taxPayerParty.type === 'Payee' ?  
+          <TINDisplay source={partyInfo} sourceType={1} style={payorStyle}/> 
+        : 
           <TINDisplay source={userInfo} sourceType={0} style={payorStyle}/>  
-        } */}
+        }
 
         <Table/>
         <View style={{position: 'absolute',

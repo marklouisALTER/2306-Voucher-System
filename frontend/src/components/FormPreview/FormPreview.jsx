@@ -67,8 +67,8 @@ export const FormPreview = ({ userInfo, partyInfo, taxPayerParty, done }) => {
   }, [pdfBlob]);
   useEffect(() => {
     
-    // setLoading(!done);
-    setLoading(false)
+    setLoading(!done);
+    // setLoading(false)
   }, [done]);
 
   
