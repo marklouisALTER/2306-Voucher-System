@@ -8,8 +8,9 @@ import Footer from './PDF parts/Footer';
 import BodyPartI from './PDF parts/PartI';
 // import BodyPartII from './PDF parts/PartII';
 import TINDisplay from './PDF parts/TIN';
+import { Table } from './PDF parts/Table';
 import { DateBox } from './PDF parts/DateViewBoxes';
-
+import { SignatureView } from './PDF parts/SignatureView';
 import bir from '../../assets/form.jpg';
 
 import styles from './style'
@@ -219,6 +220,150 @@ const MyPDFDocument = ({userInfo, partyInfo, taxPayerParty, controlNo}) => {
     
   ]
 
+  const date7 = [
+    {
+      position: 'absolute',
+      top: 518.3,
+      left:308.7,
+      width: 22,
+      height: 12,                
+    },
+    {
+      position: 'absolute',
+      top: 518.3,
+      left:332,
+      width: 22,
+      height: 12,                
+    },
+    {
+      position: 'absolute',
+      top: 518.3,
+      left:355.5,
+      width: 45,
+      height: 12,                
+      }
+    
+  ]
+
+  const date8 = [
+    {
+      position: 'absolute',
+      top: 585.7,
+      left:308.5,
+      width: 22,
+      height: 12,                
+    },
+    {
+      position: 'absolute',
+      top: 585.7,
+      left:332,
+      width: 22,
+      height: 12,                
+    },
+    {
+      position: 'absolute',
+      top: 585.7,
+      left:355.1,
+      width: 45,
+      height: 12,                
+      }
+    
+  ]
+
+  const date9 = [
+    {
+      position: 'absolute',
+      top: 682.9,
+      left:308.1,
+      width: 22,
+      height: 12,                
+    },
+    {
+      position: 'absolute',
+      top: 682.9,
+      left:331.2,
+      width: 22,
+      height: 12,                
+    },
+    {
+      position: 'absolute',
+      top: 682.9,
+      left:354.7,
+      width: 45,
+      height: 12,                
+      }
+    
+  ]
+
+  const date10 = [
+    {
+      position: 'absolute',
+      top: 791.7,
+      left:310.2,
+      width: 22,
+      height: 12,                
+    },
+    {
+      position: 'absolute',
+      top: 791.7,
+      left:333.2,
+      width: 22,
+      height: 12,                
+    },
+    {
+      position: 'absolute',
+      top: 791.7,
+      left:356.4,
+      width: 45,
+      height: 12,                
+      }
+    
+  ]
+
+  const signature1 = {
+    position: 'absolute',
+    alignItems:'center',
+    justifyContent:'center',
+    flexDirection: 'column',
+    top: 475.3,
+    left:50.9,
+    width: 397,
+    height: 20, 
+    }
+  
+  const signature2 = {
+    position: 'absolute',
+    alignItems:'center',
+    justifyContent:'center',
+    flexDirection: 'column',
+    top: 543,
+    left:50.9,
+    width: 397,
+    height: 20, 
+  }
+  const signature3 = {
+    position: 'absolute',
+    alignItems:'center',
+    justifyContent:'center',
+    flexDirection: 'column',
+    top: 633.3,
+    left:50.9,
+    width: 500,
+    height: 25, 
+  }
+  const signature4 = {
+    position: 'absolute',
+    alignItems:'center',
+    justifyContent:'center',
+    flexDirection: 'column',
+    top: 748.3,
+    left:50.9,
+    
+    width: 500,
+    height: 20,  
+  }
+
+  
   const MyDoc = () => (
     <Document pageMode='fullScreen'>
       <Page size="A4" style={styles.page}>        
@@ -292,6 +437,7 @@ const MyPDFDocument = ({userInfo, partyInfo, taxPayerParty, controlNo}) => {
           <TINDisplay source={userInfo} sourceType={0} style={payorStyle}/>  
         } */}
 
+        <Table/>
         <View style={{position: 'absolute',
         top: 255.5,
         left:60,
@@ -348,17 +494,30 @@ const MyPDFDocument = ({userInfo, partyInfo, taxPayerParty, controlNo}) => {
                     </View>
                 </View>
         </View>
-        
+
+                    
+
+
+
+        <SignatureView style={signature1}/>
         <DateBox style={date1}/>
 
+        <DateBox style={date7}/>
         <DateBox style={date2}/>
 
+        <SignatureView style={signature2}/>
         <DateBox style={date3}/>
-
+        
+        
+        <DateBox style={date8}/>
         <DateBox style={date4}/>
 
+        <SignatureView style={signature3}/>
+        <DateBox style={date9}/>
         <DateBox style={date5}/>
 
+        <SignatureView style={signature4}/>
+        <DateBox style={date10}/>
         <DateBox style={date6}/>
 
 
