@@ -85,7 +85,7 @@ export const FormPreview = ({ userInfo, partyInfo, taxPayerParty, done }) => {
             taxPayerParty={taxPayerParty}
             controlNo={controlNo} />
         </PDFViewer>
-        {/* <PDFDownloadLink 
+        <PDFDownloadLink 
           document={
             <PDFPreview 
               userInfo={userInfo} 
@@ -93,7 +93,7 @@ export const FormPreview = ({ userInfo, partyInfo, taxPayerParty, done }) => {
               taxPayerParty={taxPayerParty} 
             />} fileName="somename.pdf">
           {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download now!')}
-        </PDFDownloadLink> */}
+        </PDFDownloadLink>
 
         {/* <BlobProvider document={
           <PDFPreview 

@@ -234,11 +234,13 @@ const styles = StyleSheet.create({
 
       signatureImage: {        
         position: 'absolute',
-        bottom: -10,
-        left: 50,
+        justifyContent:'center',
+        alignItems:'center',
+        bottom: 0,
+        left: 200,
         // marginLeft:50,       
-        width: '50%',
-        height: '30px',
+        width: '30%',
+        height: '20px',
       },
       
 });

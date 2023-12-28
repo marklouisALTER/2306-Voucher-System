@@ -1,5 +1,21 @@
 import React from 'react';
 
+export const zipcode1 = {
+  position: 'absolute',
+  top: 179.8,
+  left:506,
+  width: 40,
+  height: 12,                
+  }
+export const zipcode2 = {
+  
+    position: 'absolute',
+    top: 281,
+    left:506,
+    width: 40,
+    height: 12,                
+    
+}
 export const payeeStyle = [
     {
       position: 'absolute',

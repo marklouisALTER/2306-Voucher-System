@@ -165,7 +165,12 @@ export const DetailsPaymentForm = ({ taxPayerParty, partyDetails, nextHandler, b
   };
 
   const handleSubmit = () => {
-    const rowsWithAmounts = taxCategories.filter((categ) => amounts[categ.index] > 0);
+    const rowsWithAmounts = taxCategories
+      .filter((categ) => amounts[`${categ.index}`] > 0)
+      .map((categ) => ({
+        ...categ,
+        amount: parseFloat(amounts[`${categ.index}`]),
+    }));
     
     partyDetails(rowsWithAmounts)
     

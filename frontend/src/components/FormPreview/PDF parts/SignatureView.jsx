@@ -3,29 +3,23 @@ import { Text, View, Image, } from '@react-pdf/renderer';
 import styles from '../style'
 
 
-export const SignatureView = ({taxPayerParty, style}) => {
+export const SignatureView = ({source, name, style}) => {
+    
+    const getFullSignature = () => {
+        if (!source.startsWith('data:image/png;base64,')) {
+          return `data:image/png;base64,${source}`;
+        }
+        return source;
+      };
     return(
         <View style={style}> 
-            {/* {taxPayerParty.type === 'Payee' ? (
-                <> */}
-                    {/* <Image src={getFullSignature()} style={styles.signatureImage} /> */}
-                    <Text style={{fontSize:10}}>
-                        MANUEL A MARIN                        
-                        {/* `${partyInfo.info.firstname} ${partyInfo.info.middlename} ${partyInfo.info.lastname}`.toUpperCase() */}
-                        
-                        {/* `${partyInfo.info.payor_name}`.toUpperCase() */}
-                                            
-                    </Text>
-                {/* </>
-            ): (
-                <>
-                    <Image src={`data:image/png;base64,${userInfo.signature}`} style={styles.signatureImage} />
-                    <Text style={styles.signatureText}>
-                    {`${userInfo.firstname} ${userInfo.middlename} ${userInfo.lastname}`.toUpperCase()}
-                    </Text>
-                </>
-            )}                     
-            <View style={styles.line} /> */}
+            
+            <Image src= {getFullSignature()} style={styles.signatureImage} />
+            <Text style={{fontSize:10}}>
+            {name}
+                                    
+            </Text>
+            
         </View>
     )
 }

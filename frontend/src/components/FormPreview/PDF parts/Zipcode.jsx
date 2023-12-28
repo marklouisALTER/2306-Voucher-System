@@ -3,20 +3,14 @@ import { Document, Page, Text, View, PDFViewer, Image } from '@react-pdf/rendere
 
 import styles from '../style'
 
-const ZipCode = ({source, sourceType}) => {
+const ZipCode = ({source, sourceType,style}) => {
     
     const zipCode = sourceType === 1 ? source.info.zipcode.split('') 
     : source.zip_code.split('') 
     
     return (
     
-      <View style={{
-        position: 'absolute',
-        top: 179.8,
-        left:506,
-        width: 40,
-        height: 12,                
-        }}>
+      <View style={style}>
             <View style={styles.box}>
                 <View style={styles.lineContainer}>                                    
                 <View style={styles.transparentLine} />

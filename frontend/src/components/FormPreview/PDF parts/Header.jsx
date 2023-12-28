@@ -4,8 +4,6 @@ import styles from '../style'
 
 import { DateBox } from './DateViewBoxes';
 
-
-import DateView from './DateView';
 const Header = ({controlNo}) => {
 
     const initialControlNo = 1000 + controlNo;

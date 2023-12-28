@@ -7,7 +7,7 @@ const TINDisplay = ({source, sourceType,style}) => {
     
     const tinDigits = sourceType === 1 ? source.info.tin.replace(/-/g, '').split('')
     : source.tin.replace(/-/g, '').split('');
-
+    
     return (
         <>          
             <View style={style[0]}>

@@ -2,11 +2,11 @@ import React from 'react';
 import { Text, View, } from '@react-pdf/renderer';
 
 
-export const Table = ({partyInfo}) => {
-    
-    const totalAmount = partyInfo.details.reduce((accumulator, currentItem) => {
+export const Table1 = ({partyInfo}) => {    
+    const totalAmount = partyInfo.details1.users.reduce((accumulator, currentItem) => {
         return accumulator + currentItem.amount;
       }, 0);
+
     return(
         <View style={{            
             position:'absolute',
@@ -23,6 +23,7 @@ export const Table = ({partyInfo}) => {
                 top:19,
                 left:0,}}>
                 
+            
                 <View style={{position: 'absolute',
                     alignItems:'center',
                     justifyContent:'center',
@@ -31,7 +32,7 @@ export const Table = ({partyInfo}) => {
                     left:0,
                     width: 214,
                     height: 12, }}>
-                    <Text style={{fontSize:7}}>{partyInfo.details[0]?.description}</Text>
+                    <Text style={{fontSize:7}}>{partyInfo.details1.users[0]?.description}</Text>
                 </View>
                 <View style={{position: 'absolute',
                     alignItems:'center',
@@ -41,7 +42,7 @@ export const Table = ({partyInfo}) => {
                     left:213,
                     width: 65,
                     height: 12, }}>
-                    <Text style={{fontSize:7}}>{partyInfo.details[0]?.atc}</Text>
+                    <Text style={{fontSize:7}}>{partyInfo.details1.users[0]?.price}</Text>
                 </View>
                 <View style={{position: 'absolute',
                     alignItems:'center',
@@ -51,7 +52,7 @@ export const Table = ({partyInfo}) => {
                     left:278,
                     width: 114,
                     height: 12, }}>
-                    <Text style={{fontSize:7}}>{partyInfo.details[0]?.amount}</Text>
+                    <Text style={{fontSize:7}}>{partyInfo.details1.users[0]?.quantity}</Text>
                 </View>
                 <View style={{position: 'absolute',
                     alignItems:'center',
@@ -61,7 +62,7 @@ export const Table = ({partyInfo}) => {
                     left:391.5,
                     width: 114,
                     height: 12, }}>
-                    <Text style={{fontSize:7}}>{partyInfo.details[0]?.tax}</Text>
+                    <Text style={{fontSize:7}}>{partyInfo.details1.users[0]?.amount}</Text>
                 </View>
             </View>
             <View style={{                
@@ -78,7 +79,7 @@ export const Table = ({partyInfo}) => {
                     left:0,
                     width: 214,
                     height: 12, }}>
-                    <Text style={{fontSize:7}}>{partyInfo.details[1]?.description}</Text>
+                    <Text style={{fontSize:7}}>{partyInfo.details1.users[1]?.description}</Text>
                 </View>
                 <View style={{position: 'absolute',
                     alignItems:'center',
@@ -88,7 +89,7 @@ export const Table = ({partyInfo}) => {
                     left:213,
                     width: 65,
                     height: 12, }}>
-                    <Text style={{fontSize:7}}>{partyInfo.details[1]?.atc}</Text>
+                    <Text style={{fontSize:7}}>{partyInfo.details1.users[1]?.price}</Text>
                 </View>
                 <View style={{position: 'absolute',
                     alignItems:'center',
@@ -98,7 +99,7 @@ export const Table = ({partyInfo}) => {
                     left:278,
                     width: 114,
                     height: 12, }}>
-                    <Text style={{fontSize:7}}>{partyInfo.details[1]?.amount}</Text>
+                    <Text style={{fontSize:7}}>{partyInfo.details1.users[1]?.quantity}</Text>
                 </View>
                 <View style={{position: 'absolute',
                     alignItems:'center',
@@ -108,7 +109,7 @@ export const Table = ({partyInfo}) => {
                     left:391.5,
                     width: 114,
                     height: 12, }}>
-                    <Text style={{fontSize:7}}>{partyInfo.details[1]?.tax}</Text>
+                    <Text style={{fontSize:7}}>{partyInfo.details1.users[1]?.amount}</Text>
                 </View>
             </View>
 
@@ -126,7 +127,7 @@ export const Table = ({partyInfo}) => {
                     left:0,
                     width: 214,
                     height: 12, }}>
-                    <Text style={{fontSize:7}}>{partyInfo.details[2]?.description}</Text>
+                    <Text style={{fontSize:7}}>{partyInfo.details1.users[2]?.description}</Text>
                 </View>
                 <View style={{position: 'absolute',
                     alignItems:'center',
@@ -136,7 +137,7 @@ export const Table = ({partyInfo}) => {
                     left:213,
                     width: 65,
                     height: 12, }}>
-                    <Text style={{fontSize:7}}>{partyInfo.details[2]?.atc}</Text>
+                    <Text style={{fontSize:7}}>{partyInfo.details1.users[2]?.price}</Text>
                 </View>
                 <View style={{position: 'absolute',
                     alignItems:'center',
@@ -146,7 +147,7 @@ export const Table = ({partyInfo}) => {
                     left:278,
                     width: 114,
                     height: 12, }}>
-                    <Text style={{fontSize:7}}>{partyInfo.details[2]?.amount}</Text>
+                    <Text style={{fontSize:7}}>{partyInfo.details1.users[2]?.quantity}</Text>
                 </View>
                 <View style={{position: 'absolute',
                     alignItems:'center',
@@ -156,7 +157,7 @@ export const Table = ({partyInfo}) => {
                     left:391.5,
                     width: 114,
                     height: 12, }}>
-                    <Text style={{fontSize:7}}>{partyInfo.details[2]?.tax}</Text>
+                    <Text style={{fontSize:7}}>{partyInfo.details1.users[2]?.amount}</Text>
                 </View>
             </View>
 
@@ -174,7 +175,7 @@ export const Table = ({partyInfo}) => {
                     left:0,
                     width: 214,
                     height: 12, }}>
-                    <Text style={{fontSize:7}}>{partyInfo.details[3]?.description}</Text>
+                    <Text style={{fontSize:7}}>{partyInfo.details1.users[3]?.description}</Text>
                 </View>
                 <View style={{position: 'absolute',
                     alignItems:'center',
@@ -184,7 +185,7 @@ export const Table = ({partyInfo}) => {
                     left:213,
                     width: 65,
                     height: 12, }}>
-                    <Text style={{fontSize:7}}>{partyInfo.details[3]?.atc}</Text>
+                    <Text style={{fontSize:7}}>{partyInfo.details1.users[3]?.price}</Text>
                 </View>
                 <View style={{position: 'absolute',
                     alignItems:'center',
@@ -194,7 +195,7 @@ export const Table = ({partyInfo}) => {
                     left:278,
                     width: 114,
                     height: 12, }}>
-                    <Text style={{fontSize:7}}>{partyInfo.details[3]?.amount}</Text>
+                    <Text style={{fontSize:7}}>{partyInfo.details1.users[3]?.quantity}</Text>
                 </View>
                 <View style={{position: 'absolute',
                     alignItems:'center',
@@ -204,7 +205,7 @@ export const Table = ({partyInfo}) => {
                     left:391.5,
                     width: 114,
                     height: 12, }}>
-                    <Text style={{fontSize:7}}>{partyInfo.details[3]?.tax}</Text>
+                    <Text style={{fontSize:7}}>{partyInfo.details1.users[3]?.amount}</Text>
                 </View>
             </View>
           
@@ -214,36 +215,7 @@ export const Table = ({partyInfo}) => {
                 height:12,
                 top:64,
                 left:0,}}>
-                    <View style={{position: 'absolute',
-                    alignItems:'center',
-                    justifyContent:'center',
-                    flexDirection: 'column',
-                    top: 1,
-                    left:0,
-                    width: 214,
-                    height: 12, }}>
-                    <Text style={{fontSize:7}}>{partyInfo.details[4]?.description}</Text>
-                </View>
-                <View style={{position: 'absolute',
-                    alignItems:'center',
-                    justifyContent:'center',
-                    flexDirection: 'column',
-                    top: 1,
-                    left:213,
-                    width: 65,
-                    height: 12, }}>
-                    <Text style={{fontSize:7}}>{partyInfo.details[4]?.atc}</Text>
-                </View>
-                <View style={{position: 'absolute',
-                    alignItems:'center',
-                    justifyContent:'center',
-                    flexDirection: 'column',
-                    top: 1,
-                    left:278,
-                    width: 114,
-                    height: 12, }}>
-                    <Text style={{fontSize:7}}>{partyInfo.details[4]?.amount}</Text>
-                </View>
+                
                 <View style={{position: 'absolute',
                     alignItems:'center',
                     justifyContent:'center',
@@ -252,7 +224,7 @@ export const Table = ({partyInfo}) => {
                     left:391.5,
                     width: 114,
                     height: 12, }}>
-                    <Text style={{fontSize:7}}>{partyInfo.details[4]?.tax}</Text>
+                    <Text style={{fontSize:7}}>{totalAmount}</Text>
                 </View>
             </View>
              
@@ -262,36 +234,7 @@ export const Table = ({partyInfo}) => {
                 height:12,
                 top:75,
                 left:0,}}>
-                    <View style={{position: 'absolute',
-                    alignItems:'center',
-                    justifyContent:'center',
-                    flexDirection: 'column',
-                    top: 1,
-                    left:0,
-                    width: 214,
-                    height: 12, }}>
-                    <Text style={{fontSize:7}}>{partyInfo.details[5]?.description}</Text>
-                </View>
-                <View style={{position: 'absolute',
-                    alignItems:'center',
-                    justifyContent:'center',
-                    flexDirection: 'column',
-                    top: 1,
-                    left:213,
-                    width: 65,
-                    height: 12, }}>
-                    <Text style={{fontSize:7}}>{partyInfo.details[5]?.atc}</Text>
-                </View>
-                <View style={{position: 'absolute',
-                    alignItems:'center',
-                    justifyContent:'center',
-                    flexDirection: 'column',
-                    top: 1,
-                    left:278,
-                    width: 114,
-                    height: 12, }}>
-                    <Text style={{fontSize:7}}>{partyInfo.details[5]?.amount}</Text>
-                </View>
+                
                 <View style={{position: 'absolute',
                     alignItems:'center',
                     justifyContent:'center',
@@ -300,7 +243,7 @@ export const Table = ({partyInfo}) => {
                     left:391.5,
                     width: 114,
                     height: 12, }}>
-                    <Text style={{fontSize:7}}>{partyInfo.details[5]?.tax}</Text>
+                    <Text style={{fontSize:7}}></Text>
                 </View>
             </View>
            
@@ -310,36 +253,7 @@ export const Table = ({partyInfo}) => {
                 height:12,
                 top:86,
                 left:0,}}>
-                    <View style={{position: 'absolute',
-                    alignItems:'center',
-                    justifyContent:'center',
-                    flexDirection: 'column',
-                    top: 1,
-                    left:0,
-                    width: 214,
-                    height: 12, }}>
-                    <Text style={{fontSize:7}}>{partyInfo.details[6]?.description}</Text>
-                </View>
-                <View style={{position: 'absolute',
-                    alignItems:'center',
-                    justifyContent:'center',
-                    flexDirection: 'column',
-                    top: 1,
-                    left:213,
-                    width: 65,
-                    height: 12, }}>
-                    <Text style={{fontSize:7}}>{partyInfo.details[6]?.atc}</Text>
-                </View>
-                <View style={{position: 'absolute',
-                    alignItems:'center',
-                    justifyContent:'center',
-                    flexDirection: 'column',
-                    top: 1,
-                    left:278,
-                    width: 114,
-                    height: 12, }}>
-                    <Text style={{fontSize:7}}>{partyInfo.details[6]?.amount}</Text>
-                </View>
+                
                 <View style={{position: 'absolute',
                     alignItems:'center',
                     justifyContent:'center',
@@ -348,7 +262,7 @@ export const Table = ({partyInfo}) => {
                     left:391.5,
                     width: 114,
                     height: 12, }}>
-                    <Text style={{fontSize:7}}>{partyInfo.details[6]?.tax}</Text>
+                    <Text style={{fontSize:7}}></Text>
                 </View>
             </View>
              
@@ -358,36 +272,7 @@ export const Table = ({partyInfo}) => {
                 height:12,
                 top:98,
                 left:0,}}>
-                    <View style={{position: 'absolute',
-                    alignItems:'center',
-                    justifyContent:'center',
-                    flexDirection: 'column',
-                    top: 1,
-                    left:0,
-                    width: 214,
-                    height: 12, }}>
-                    <Text style={{fontSize:7}}>{partyInfo.details[7]?.description}</Text>
-                </View>
-                <View style={{position: 'absolute',
-                    alignItems:'center',
-                    justifyContent:'center',
-                    flexDirection: 'column',
-                    top: 1,
-                    left:213,
-                    width: 65,
-                    height: 12, }}>
-                    <Text style={{fontSize:7}}>{partyInfo.details[7]?.atc}</Text>
-                </View>
-                <View style={{position: 'absolute',
-                    alignItems:'center',
-                    justifyContent:'center',
-                    flexDirection: 'column',
-                    top: 1,
-                    left:278,
-                    width: 114,
-                    height: 12, }}>
-                    <Text style={{fontSize:7}}>{partyInfo.details[7]?.amount}</Text>
-                </View>
+                
                 <View style={{position: 'absolute',
                     alignItems:'center',
                     justifyContent:'center',
@@ -396,7 +281,7 @@ export const Table = ({partyInfo}) => {
                     left:391.5,
                     width: 114,
                     height: 12, }}>
-                    <Text style={{fontSize:7}}>{partyInfo.details[7]?.tax}</Text>
+                    <Text style={{fontSize:7}}></Text>
                 </View>
             </View>
        
@@ -406,36 +291,7 @@ export const Table = ({partyInfo}) => {
                 height:12,
                 top:109,
                 left:0,}}>
-                    <View style={{position: 'absolute',
-                    alignItems:'center',
-                    justifyContent:'center',
-                    flexDirection: 'column',
-                    top: 1,
-                    left:0,
-                    width: 214,
-                    height: 12, }}>
-                    <Text style={{fontSize:7}}>{partyInfo.details[8]?.description}</Text>
-                </View>
-                <View style={{position: 'absolute',
-                    alignItems:'center',
-                    justifyContent:'center',
-                    flexDirection: 'column',
-                    top: 1,
-                    left:213,
-                    width: 65,
-                    height: 12, }}>
-                    <Text style={{fontSize:7}}>{partyInfo.details[8]?.atc}</Text>
-                </View>
-                <View style={{position: 'absolute',
-                    alignItems:'center',
-                    justifyContent:'center',
-                    flexDirection: 'column',
-                    top: 1,
-                    left:278,
-                    width: 114,
-                    height: 12, }}>
-                    <Text style={{fontSize:7}}>{partyInfo.details[8]?.amount}</Text>
-                </View>
+                
                 <View style={{position: 'absolute',
                     alignItems:'center',
                     justifyContent:'center',
@@ -444,7 +300,7 @@ export const Table = ({partyInfo}) => {
                     left:391.5,
                     width: 114,
                     height: 12, }}>
-                    <Text style={{fontSize:7}}>{partyInfo.details[8]?.tax}</Text>
+                    <Text style={{fontSize:7}}></Text>
                 </View>
             </View>
              
@@ -454,36 +310,7 @@ export const Table = ({partyInfo}) => {
                 height:12,
                 top:120,
                 left:0,}}>
-                    <View style={{position: 'absolute',
-                    alignItems:'center',
-                    justifyContent:'center',
-                    flexDirection: 'column',
-                    top: 1,
-                    left:0,
-                    width: 214,
-                    height: 12, }}>
-                    <Text style={{fontSize:7}}>{partyInfo.details[9]?.description}</Text>
-                </View>
-                <View style={{position: 'absolute',
-                    alignItems:'center',
-                    justifyContent:'center',
-                    flexDirection: 'column',
-                    top: 1,
-                    left:213,
-                    width: 65,
-                    height: 12, }}>
-                    <Text style={{fontSize:7}}>{partyInfo.details[9]?.atc}</Text>
-                </View>
-                <View style={{position: 'absolute',
-                    alignItems:'center',
-                    justifyContent:'center',
-                    flexDirection: 'column',
-                    top: 1,
-                    left:278,
-                    width: 114,
-                    height: 12, }}>
-                    <Text style={{fontSize:7}}>{partyInfo.details[9]?.amount}</Text>
-                </View>
+                
                 <View style={{position: 'absolute',
                     alignItems:'center',
                     justifyContent:'center',
@@ -492,7 +319,7 @@ export const Table = ({partyInfo}) => {
                     left:391.5,
                     width: 114,
                     height: 12, }}>
-                    <Text style={{fontSize:7}}>{partyInfo.details[9]?.tax}</Text>
+                    <Text style={{fontSize:7}}></Text>
                 </View>
             </View>
                
@@ -511,7 +338,7 @@ export const Table = ({partyInfo}) => {
                     left:278,
                     width: 114,
                     height: 12, }}>
-                    <Text style={{fontSize:7}}>{totalAmount}</Text>
+                    <Text style={{fontSize:7}}></Text>
                 </View>
                 <View style={{position: 'absolute',
                     alignItems:'center',
@@ -521,7 +348,7 @@ export const Table = ({partyInfo}) => {
                     left:391.5,
                     width: 114,
                     height: 12, }}>
-                    <Text style={{fontSize:7}}></Text>
+                    <Text style={{fontSize:7}}>{totalAmount}</Text>
                 </View>
             </View> 
         </View>
