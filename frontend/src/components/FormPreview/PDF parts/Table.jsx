@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import { Text, View, Image, } from '@react-pdf/renderer';
-import styles from '../style'
+import React from 'react';
+import { Text, View, } from '@react-pdf/renderer';
 
 
 export const Table = ({taxPayerParty}) => {
