@@ -18,11 +18,10 @@ export const VoucherCard = (props) => {
                 setPdfUrl(pdfDataUrl);
             } 
         };
-        fetchPdfBlob();
-        
+        fetchPdfBlob();        
     }, []); 
     
- 
+    
     return (
         <>
             <div                 
@@ -36,7 +35,7 @@ export const VoucherCard = (props) => {
                     </div>
                     <div>
                         <h1 className='font-secondary text-md text-black'>Voucher   </h1>
-                        <span className='font-secondary text-[13px] text-black'>Control No. {props.control_no}</span>
+                        <span className='font-secondary text-[13px] text-black'>Control No. {props?.control_no}</span>
                         <h1 className='font-secondary text-xs lg:text-md text-gray-500'>{formattedDate}</h1>
                     </div>
                 </div>

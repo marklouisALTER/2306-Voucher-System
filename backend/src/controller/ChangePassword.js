@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const ChangePassword = expressAsyncHandler(async (req, res)=> {
     const { username, password, new_password } = req.body;
 
-    mainConnection.query('SELECT email_address, password FROM tbl_users WHERE email_address = ? ', [username], async (err, result)=> {
+    mainConnection.query('SELECT email_address, password FROM tbl_user WHERE email_address = ? ', [username], async (err, result)=> {
         if(err){
             res.status(500).json({ title: 'Error', message: err.message, isSuccess: false });
         }
@@ -18,7 +18,7 @@ const ChangePassword = expressAsyncHandler(async (req, res)=> {
                 const salt = bcrypt.genSaltSync(10);
                 const hash = bcrypt.hashSync(new_password, salt);
 
-                mainConnection.query('UPDATE tbl_users SET password = ? WHERE email_address = ?', [hash, username], (err, result) => {
+                mainConnection.query('UPDATE tbl_user SET password = ? WHERE email_address = ?', [hash, username], (err, result) => {
                     if(err){
                         res.status(500).json({ title: 'Error', message: err.message, isSuccess: false });
                     }

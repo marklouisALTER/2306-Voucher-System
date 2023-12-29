@@ -6,7 +6,7 @@ const UserRetrieve = expressAsyncHandler(async (req, res) => {
     const { userEmail } = req.body;
     // console.log(userEmail);
 
-    mainConnection.query('SELECT * FROM tbl_users WHERE email_address = ?', [userEmail], (err, result) => {
+    mainConnection.query('SELECT * FROM tbl_user WHERE email_address = ?', [userEmail], (err, result) => {
         if (err) {
             res.status(500).json({ title: 'Error', message: err.message, isSuccess: false });
         }

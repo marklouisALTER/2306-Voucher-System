@@ -11,7 +11,7 @@ const GetVoucher = expressAsyncHandler(async (req, res) => {
     const { email } = req.params;     
     
     const usernameFromEmail = email.split('@')[0];
-    const userDatabaseName = `user_${usernameFromEmail}`;
+    const userDatabaseName = `2306_${usernameFromEmail}`;
     
     const userDatabasePool = getUserDatabaseConnection(usernameFromEmail);
 
@@ -21,10 +21,10 @@ const GetVoucher = expressAsyncHandler(async (req, res) => {
     await userDatabasePool.query(`USE ${userDatabaseName}`);
 
     try {
-        const result = await userDatabasePool.query('SELECT * FROM user_voucher');
-
+        const result = await userDatabasePool.query('SELECT * FROM user_voucher_2306');
+        
         if (!result || result.length === 0) {
-            return res.status(404).send('No vouchers found');
+            return res.status(200).send('No vouchers found');
         }
 
         const voucherData = result.map((voucher) => ({
@@ -32,6 +32,7 @@ const GetVoucher = expressAsyncHandler(async (req, res) => {
             voucher: voucher.voucher.toString('base64'),
             created_at: voucher.created_at,
         }));
+        
 
         res.header('Cache-Control', 'no-store');
         res.status(200).json({ title: 'Success', message: 'Retrieved Successful', voucherData: voucherData });

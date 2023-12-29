@@ -8,7 +8,7 @@ require('dotenv').config();
 const Login = expressAsyncHandler(async (req, res) => {
     const { username, password, checked } = req.body;
 
-    mainConnection.query('SELECT * FROM tbl_users WHERE email_address = ?', [username], async (err, result) => {
+    mainConnection.query('SELECT * FROM tbl_user WHERE email_address = ?', [username], async (err, result) => {
         if(err){
             res.status(500).json({title: 'Internal Error', message: err.message});
         }

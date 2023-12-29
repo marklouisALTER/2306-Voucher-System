@@ -89,11 +89,11 @@ const styles = StyleSheet.create({
     },
     inputText: {
       fontSize:10,
-      color:'black',
-      zIndex: '10',
-      height: 20,
-      marginLeft:2,
-      marginTop:1,
+      // color:'black',
+      // zIndex: '10',
+      // height: 20,
+      // marginLeft:2,
+      // marginTop:1,
     },
     inputText1: {
       fontSize:12,
@@ -126,10 +126,15 @@ const styles = StyleSheet.create({
   
     // INPUT BOX
       smallInput: {
-        width: 40,
-        height: 20,
-        border: 1,
-        borderColor: 'black',
+        position: 'absolute',
+        top: 130.6,
+        left:206,
+        width: 33,
+        height: 12,
+        // width: 40,
+        // height: 20,
+        // border: 1,
+        // borderColor: 'black',
         backgroundColor: 'white',
       },
       input: {
@@ -148,11 +153,18 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
       },
       regtangleinput: {
-        width: '100%',
-        height: 20,
-        border: 1,
-        borderColor: 'black',
-        backgroundColor: 'white',
+
+        position: 'absolute',
+        top: 153.7,
+        left:60,
+        width: 488,
+        height: 12,
+
+        // width: '100%',
+        // height: 20,
+        // border: 1,
+        // borderColor: 'black',
+        // backgroundColor: 'white',
       },
       rectanglebox: {
         width: '100%',
@@ -182,10 +194,10 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
       },
       vline: {
-        width: 1,
+        width: 0.5,
         height: 5, // Adjust the height of each line
         backgroundColor: 'black',
-        marginTop:8,
+        marginTop:22,
         
       },
       transparentLine: {
@@ -198,6 +210,7 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',      
         position: 'relative',
+        
       },
       line: {
         width: '80%',
@@ -221,11 +234,13 @@ const styles = StyleSheet.create({
 
       signatureImage: {        
         position: 'absolute',
-        bottom: -10,
-        left: 50,
+        justifyContent:'center',
+        alignItems:'center',
+        bottom: 0,
+        left: 200,
         // marginLeft:50,       
-        width: '50%',
-        height: '30px',
+        width: '30%',
+        height: '20px',
       },
       
 });

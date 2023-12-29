@@ -10,6 +10,8 @@ import { useNavigate, useLocation } from 'react-router-dom'
 import { DetailsPaymentForm } from '../../components/VoucherInformationForm/DetailsPaymentForm';
 import { ExampleUserIDModal } from '../../components/Modal/ExampleUserIdModal';
 import { Success } from '../../components/FormPreview/Success';
+import { DetailsPaymentForm1 } from '../../components/VoucherInformationForm/2000b/DetailsPaymentForm';
+
 
 const { Search } = Input;
 import axios from 'axios'
@@ -26,7 +28,8 @@ export const Voucher = () => {
   const [partyInfo, setPartyInfo] = useState({
     info: [],
     details: [],
-    signature: ''
+    signature: '',
+    details1:[],
   });
 
   const [activeTab, setActiveTab] = useState('1');
@@ -120,6 +123,7 @@ export const Voucher = () => {
   
   const handlePartyInfoChange = (values) => setPartyInfo((prevPartyInfo) => ({ ...prevPartyInfo, info: values }));
   const handlePartyDetailsChange = (values) => setPartyInfo((prevPartyInfo) => ({ ...prevPartyInfo, details: values })); 
+  const handlePartyDetails1Change = (values) => setPartyInfo((prevPartyInfo) => ({ ...prevPartyInfo, details1: values })); 
   const handlePartySignatureChange = (values) => setPartyInfo((prevPartyInfo) => ({ ...prevPartyInfo, signature: values })); 
 
   const handlePartyClass = (newClass) => setTaxPayerParty((prevTaxPayerParty) => ({ ...prevTaxPayerParty, class: newClass }));
@@ -181,9 +185,15 @@ export const Voucher = () => {
                 <div className='flex flex-col gap-4 p-6'>                  
                   <Title level={3}>{` ${taxPayerParty.type} Nature of Payment`} </Title>                    
                   <div className='flex flex-col w-full gap-4'>                                      
-                    <DetailsPaymentForm 
+                    {/* <DetailsPaymentForm 
                       taxPayerParty={taxPayerParty} 
                       partyDetails={handlePartyDetailsChange} 
+                      nextHandler={handleNext} 
+                      backHandler={handleBack}
+                    /> */}
+                    <DetailsPaymentForm1
+                      taxPayerParty={taxPayerParty} 
+                      partyDetails={handlePartyDetails1Change} 
                       nextHandler={handleNext} 
                       backHandler={handleBack}
                     />

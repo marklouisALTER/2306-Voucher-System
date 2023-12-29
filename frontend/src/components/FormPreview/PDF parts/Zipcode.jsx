@@ -3,25 +3,29 @@ import { Document, Page, Text, View, PDFViewer, Image } from '@react-pdf/rendere
 
 import styles from '../style'
 
-const ZipCode = ({source, sourceType}) => {
+const ZipCode = ({source, sourceType,style}) => {
     
     const zipCode = sourceType === 1 ? source.info.zipcode.split('') 
     : source.zip_code.split('') 
     
     return (
     
-        <View style={styles.box}>
-          <View style={styles.lineContainer}>
-            <View style={styles.transparentLine} />
-            {zipCode.map((digit, index) => (
-              <React.Fragment key={index}>
-                <Text style={styles.inputText1}>{digit}</Text>
-                {index !== 3 && <View style={styles.vline} />}
-              </React.Fragment>
-            ))}
-            <View style={styles.transparentLine} />
-          </View>
-        </View>
+      <View style={style}>
+            <View style={styles.box}>
+                <View style={styles.lineContainer}>                                    
+                <View style={styles.transparentLine} />
+                <View style={styles.transparentLine} />
+                    <Text style={{fontSize:10,marginTop:15}}> {zipCode[0]}</Text>
+                    <View style={styles.vline} />
+                    <Text style={{fontSize:10,marginTop:15}}> {zipCode[1]}</Text>
+                    <View style={styles.vline} />
+                    <Text style={{fontSize:10,marginTop:15}}> {zipCode[2]}</Text>
+                    <View style={styles.vline} />
+                    <Text style={{fontSize:10,marginTop:15}}> {zipCode[3]}</Text>
+                    <View style={styles.transparentLine} />
+                </View>
+            </View>
+    </View>
     
     );
 }

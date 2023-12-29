@@ -27,7 +27,7 @@ export const Dashboard = () => {
     {
       id: 1,
       title: 'Total Receipt',
-      value: '20',
+      value: '0',
       icon: BiSolidReceipt,
       link: '/admin/voucher',
     },
@@ -53,14 +53,17 @@ export const Dashboard = () => {
       
       if (response.status === 200) {
         const { data } = response
-        
-        const size = Object.keys(data.voucherData).length;
+                
+        const size = data?.voucherData ? Object.keys(data.voucherData).length : 0;
         
         const newData = [...cardData];
-        newData[0] = { ...newData[0], value: size };
-
-        setVoucherData(data.voucherData)
+        newData[0] = { ...newData[0], value: size};
         setCardData(newData);
+        
+        size && setVoucherData(data?.voucherData);
+          
+        
+        
       }    
     }
     getVouchers()
@@ -88,7 +91,7 @@ export const Dashboard = () => {
               <h1 className='text-white font-primary'>Recent Voucher</h1>
             </div>
             
-              {voucherData && voucherData.length > 0 ? (
+              {voucherData[0].control_no !== '' ? (
                 <div className='w-full max-h-[55rem] border-2 overflow-y-scroll p-2'>
                   {voucherData.map((items, index) => (
                     
