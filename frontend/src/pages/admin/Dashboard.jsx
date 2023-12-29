@@ -110,9 +110,9 @@ export const Dashboard = () => {
                 >
                   <Link
                     to={'/admin/voucher'}
-                    className="flex items-center gap-3 px-3 py-2 transition-all delay-100 ease-in-out hover:bg-onMouse bg-blue-600 hover:bg-blue-700 rounded-md"
+                    className="flex items-center gap-3 px-3 py-2 transition-all delay-100 ease-in-out bg-blue-600 hover:bg-blue-700 rounded-md"
                   >
-                    <h1 className="text-white transition-all delay-100 ease-in-out font-secondary text-sm md:text-md lg:text-md text-primary group-hover:text-secondary">
+                    <h1 className="text-white transition-all delay-100 ease-in-out font-secondary text-sm md:text-md lg:text-md group-hover:text-secondary">
                       Issue Now!
                     </h1>
                   </Link>
