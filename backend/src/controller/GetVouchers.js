@@ -21,7 +21,7 @@ const GetVoucher = expressAsyncHandler(async (req, res) => {
     await userDatabasePool.query(`USE ${userDatabaseName}`);
 
     try {
-        const result = await userDatabasePool.query('SELECT * FROM user_voucher_2306');
+        const result = await userDatabasePool.query('SELECT * FROM user_voucher');
         
         if (!result || result.length === 0) {
             return res.status(200).send('No vouchers found');
