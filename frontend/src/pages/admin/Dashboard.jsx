@@ -16,7 +16,7 @@ export const Dashboard = () => {
   
   const navigate = useNavigate();
   const location = useLocation();
-
+  const [showCredits, setShowCredits] = useState();
   const [voucherData, setVoucherData] = useState([{
     control_no: '',
     created_at: '',
@@ -67,6 +67,28 @@ export const Dashboard = () => {
       }    
     }
     getVouchers()
+
+    const getCredits = async () => {
+      const credentials = {
+        params: {
+          email: getUser()
+        }
+      };
+    
+      try {
+        const response = await axios.get('http://localhost:4000/api/get_credits', credentials);
+        const availableCredits = response?.data.data[0];
+        const creditPoints = [...cardData];
+        creditPoints[1] = { ...creditPoints[1], value: availableCredits.available_creditpoints || "Error"};
+        setCardData(creditPoints);  
+
+      } catch (err) {
+
+      }
+    };
+    
+    getCredits();
+
   }, []);
   
   return (
