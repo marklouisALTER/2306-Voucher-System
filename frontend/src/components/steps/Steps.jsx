@@ -7,6 +7,7 @@ export const StepsComponent = ({steps}) => {
             size="small"
             current={steps}
             direction='horizontal'
+            labelPlacement="vertical"
             items={[
             {
                 
