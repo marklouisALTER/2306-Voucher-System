@@ -8,6 +8,7 @@ import { Signature } from '../components/Signature/Signature'
 import { Modal } from '../components/Modal/Modal'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { SubscriptionPlan } from '../components/Plan/SubscriptionPlan'
 export const Register = () => {
 
     const [loading, setLoading] = useState(false);
@@ -29,6 +30,12 @@ export const Register = () => {
         foreignAddress: "",
         emailAddress: "",
         password: "",
+        screenshot: "",
+        selected_plan: "",
+        quantity: 0,
+        total_price: 0.00,
+        plan_creditpoints: 0.00,
+        reference_num: "",
         signature: "",
     })
 
@@ -41,6 +48,8 @@ export const Register = () => {
             [name] : type === "checkbox" ? checked : value
         }))
     }
+
+    console.log(formData);
 
     const submitForm = async () => {
         try {
@@ -109,6 +118,15 @@ export const Register = () => {
                             handleBack={() => setStepCounter(prevState => prevState - 1)}
                         />
             case 4 : 
+                return <SubscriptionPlan 
+                    handleForm={handleForm}
+                    toggle={() => setStepCounter(prevState => prevState + 1)}
+                    reference_num={formData.reference_num}
+                    screenshot = {formData.screenshot}
+                    formData={setFormData}
+                    handleBack={() => setStepCounter(prevState => prevState - 1)}
+                />
+            case 5 : 
                 return <Signature 
                             handleForm={handleForm}
                             submitForm={submitForm}
@@ -130,7 +148,7 @@ export const Register = () => {
                 <div className='w-[80%] md:w-[60%] lg:w-[40%]'>
                     <StepsComponent steps={stepCounter}/>
                 </div>
-                <div className='w-[20rem] h-[20rem]'>
+                <div className='w-[50rem] h-[20rem] flex justify-center'>
                     {/* <UserType tin={formData.tin} handleForm={handleForm}/> */}
                     {showStep(stepCounter)}
                 </div>

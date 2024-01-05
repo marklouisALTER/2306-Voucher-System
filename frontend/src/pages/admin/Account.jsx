@@ -15,7 +15,7 @@ import { Change_Signature } from '../../components/Modal/Change_Signature';
 import Clipboard from '../../components/Clipboard/Clipboard';
 export const Account = ({title}) => {
 
-  const { getUser, isAuthenticated } = Authentication();
+  const { getUser, isAuthenticated, getToken } = Authentication();
   const user = getUser();
   const [userInformation, setUserInformation] = useState();
   const [isLoading, setIsLoading] = useState(true);
@@ -28,7 +28,7 @@ export const Account = ({title}) => {
   })
   const navigate = useNavigate();
   const location = useLocation();
-
+  const token = getToken();
 
 
   useEffect(() => {
@@ -45,7 +45,11 @@ export const Account = ({title}) => {
     const fetchingData = async () => {
       setIsLoading(prevState => !prevState);
       try {
-        const response = await axios.post('http://localhost:4000/api/user_retrieve', username);
+        const response = await axios.post('http://localhost:4000/api/user_retrieve', username, {
+          headers: {
+            Authorization: token
+          }
+        });
         // console.log(response.data.user.user_num)
         if(response.data.isSuccess){
           // console.log(response.data.user);

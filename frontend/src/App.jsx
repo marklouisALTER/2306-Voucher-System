@@ -11,6 +11,7 @@ import { Account } from './pages/admin/Account'
 import { About_us } from './pages/About_us'
 import { Pricing } from './pages/Pricing'
 import { Billing } from './pages/admin/Billing'
+import { AddCredits } from './components/Plan/AddCredits'
 // import "style.css"
 function App() {
   
@@ -34,6 +35,7 @@ function App() {
           <Route path="billing" element={<Billing />} />
           <Route path="account" element={<Account title="Voucher | Account Settings"/>} />
         </Route>
+          <Route path="add-credits" element={<AddCredits />} />
       </Routes>
     </Router>
 

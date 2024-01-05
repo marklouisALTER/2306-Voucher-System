@@ -10,6 +10,14 @@ const mainConnection = mysql.createPool({
     database: process.env.DB_NAME,
 });
 
+const masterDB = mysql.createPool({
+    connectionLimit: 10, 
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_MAIN,
+});
+
 const getUserDatabaseConnection = (username) => {
     const userDatabaseName = `2306_${username.split('@')[0]}`;
     const pool = mysql.createPool({
@@ -33,6 +41,14 @@ mainConnection.getConnection((err, connection) => {
         connection.release();
     }
 });
+masterDB.getConnection((err, connection) => {
+    if (err) {
+        console.error('Error connecting to master database:', err);
+    } else {
+        console.log('Connected to Master database!');
+        connection.release();
+    }
+});
 
 const closeConnections = () => {
     mainConnection.end();
@@ -44,4 +60,4 @@ process.on('SIGINT', () => {
     process.exit();
 });
 
-module.exports = { mainConnection, getUserDatabaseConnection, closeConnections };
+module.exports = { mainConnection, getUserDatabaseConnection, closeConnections, masterDB };

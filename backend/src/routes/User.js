@@ -10,7 +10,11 @@ const GetVoucher = require('../controller/GetVouchers.js');
 const GetCountVoucher = require('../controller/GetCountVoucher.js');
 const Register = require('../controller/Register.js');
 const ChangeSignature = require('../controller/ChangeSignature.js');
-
+const getVoucher = require('../controller/GetCreditPoints.js');
+const GetSubscriptionPlan = require('../controller/GetSubsciptionPlan.js');
+const AddCredits = require('../controller/AddCredits.js');
+const ViewPendingTransaction = require('../controller/ViewPendingTransaction.js');
+// const authenticateUser = require('../Middleware/AuthenticatedUser.js')
 // Set up multer for handling file uploads
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
@@ -31,5 +35,14 @@ RouterUser.get('/get_count_voucher/:email', GetCountVoucher); // retrieve count 
 
 RouterUser.post('/register', Register); // register the user
 
+RouterUser.get('/get_credits', getVoucher);
+
+RouterUser.get('/get_billing', GetSubscriptionPlan);
+
 RouterUser.post('/change_signature', ChangeSignature)
+
+RouterUser.post('/add_credits', AddCredits);
+
+RouterUser.get('/view_transactions', ViewPendingTransaction);
+
 module.exports = RouterUser

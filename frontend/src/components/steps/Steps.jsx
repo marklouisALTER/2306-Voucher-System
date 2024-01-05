@@ -24,6 +24,9 @@ export const StepsComponent = ({steps}) => {
             {
                 
             },
+            {
+                
+            },
             ]}
         />
     </div>

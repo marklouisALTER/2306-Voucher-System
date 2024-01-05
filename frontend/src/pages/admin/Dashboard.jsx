@@ -11,12 +11,13 @@ import axios from 'axios'
 
 export const Dashboard = () => {
 
-  const { isAuthenticated, getUser, logout } = Authentication();
+  const { isAuthenticated, getUser, logout, getToken } = Authentication();
   
   
   const navigate = useNavigate();
   const location = useLocation();
-
+  const token = getToken()
+  const [showCredits, setShowCredits] = useState();
   const [voucherData, setVoucherData] = useState([{
     control_no: '',
     created_at: '',
@@ -34,7 +35,7 @@ export const Dashboard = () => {
     {
       id: 2,
       title: 'Billing',
-      value: '20',
+      value: '0',
       icon: BiSolidReceipt,
     },
   ]);
@@ -49,7 +50,11 @@ export const Dashboard = () => {
   
   useEffect(() => {
     const getVouchers = async () => {      
-      const response =  await axios.get(`http://localhost:4000/api/get_voucher/${getUser()}`);
+      const response =  await axios.get(`http://localhost:4000/api/get_voucher/${getUser()}`, {
+        headers: {
+          Authorization: token
+        }
+      });
       
       if (response.status === 200) {
         const { data } = response
@@ -67,6 +72,32 @@ export const Dashboard = () => {
       }    
     }
     getVouchers()
+
+    const getCredits = async () => {
+      const credentials = {
+        params: {
+          email: getUser()
+        }
+      };
+    
+      try {
+        const response = await axios.get('http://localhost:4000/api/get_credits', credentials, {
+          headers: {
+            Authorization: token
+          }
+        });
+        const availableCredits = response?.data.data[0];
+        const creditPoints = [...cardData];
+        creditPoints[1] = { ...creditPoints[1], value: availableCredits.available_creditpoints || "Error"};
+        setCardData(creditPoints);  
+
+      } catch (err) {
+
+      }
+    };
+    
+    getCredits();
+
   }, []);
   
   return (
@@ -113,9 +144,9 @@ export const Dashboard = () => {
                 >
                   <Link
                     to={'/admin/voucher'}
-                    className="flex items-center gap-3 px-3 py-2 transition-all delay-100 ease-in-out hover:bg-onMouse bg-blue-600 hover:bg-blue-800 rounded-md"
+                    className="flex items-center gap-3 px-3 py-2 transition-all delay-100 ease-in-out bg-blue-600 hover:bg-blue-700 rounded-md"
                   >
-                    <h1 className="text-white transition-all delay-100 ease-in-out font-secondary text-sm md:text-md lg:text-md text-primary group-hover:text-secondary">
+                    <h1 className="text-white transition-all delay-100 ease-in-out font-secondary text-sm md:text-md lg:text-md group-hover:text-secondary">
                       Issue Now!
                     </h1>
                   </Link>
