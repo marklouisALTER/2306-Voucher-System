@@ -8,6 +8,7 @@ import { FaCoins } from "react-icons/fa";
 import { PiHandCoinsFill } from "react-icons/pi";
 import { FaNewspaper } from "react-icons/fa";
 import { IoReceiptSharp } from "react-icons/io5";
+import { AddCredits } from '../../components/Plan/AddCredits';
 import axios from 'axios';
 export const Billing = () => {
 
@@ -15,6 +16,7 @@ export const Billing = () => {
   const [userBilling, setUserBilling] = useState();
   const navigate = useNavigate();
   const location = useLocation();
+
   useEffect(() => {
     if(!isAuthenticated()){
       navigate('/sign-in', { state: { message: "You must login first", from: location.pathname } });
@@ -49,7 +51,7 @@ export const Billing = () => {
         rounded-xl shadow-xl hover:shadow-spread-md hover:shadow-gray-400 border-b-4
         border-secondary transition-all delay-75 duration-300 ease-in-out 
         transform hover:scale-105'>
-          <Progress type="dashboard" percent={userBilling.creditpercentage} strokeColor={conicColors} size={[250]}/>
+          <Progress type="dashboard" percent={userBilling?.creditpercentage} strokeColor={conicColors} size={[250]}/>
           <h1 className='font-primary font-medium text-primary text-xl w-[80%] text-center mt-5'>
             AVAILABLE CREDIT SCORE PERCENTAGE
           </h1>
@@ -64,7 +66,7 @@ export const Billing = () => {
               </div>
               <div className='flex items-center p-5 gap-5'>
                 <FaBoltLightning className='text-3xl text-orange-400'/>
-                <h1 className='text-5xl text-primary'>{userBilling.selected_plan}</h1>
+                <h1 className='text-5xl text-primary'>{userBilling?.selected_plan}</h1>
               </div>
             </div>
 
@@ -75,13 +77,14 @@ export const Billing = () => {
               </div>
               <div className='flex items-center p-5 gap-5'>
                 <FaCoins className='text-3xl text-orange-400'/>
-                <h1 className='text-5xl text-primary'>{userBilling.available_creditpoints}<span className='text-xl'>/ {userBilling.plan_creditpoints}</span></h1>
+                <h1 className='text-5xl text-primary'>{userBilling?.available_creditpoints}<span className='text-xl'>/ {userBilling?.plan_creditpoints}</span></h1>
               </div>
               <div className='flex items-center justify-end'>
                 <button
                   className='bg-optional text-white font-secondary p-1 px-5 rounded-md
                   hover:bg-secondary transition-all delay-100 ease-in-out focus:outline-none
                   focus:ring-4 focus:ring-blue-300'
+                  onClick={() => navigate(`../../add-credits`)}
                 >
                   Buy Credits
                 </button>
@@ -111,16 +114,16 @@ export const Billing = () => {
                 <div className='flex flex-col items-start justify-end gap-3 w-full'>
                   <div className=''>
                     <h1 className='font-primary text-secondary'>Subscription Date Start :</h1>
-                    <h1 className='font-secondary text-primary font-medium italic'>{userBilling.start_date}</h1>
+                    <h1 className='font-secondary text-primary font-medium italic'>{userBilling?.start_date}</h1>
                   </div>
                   <div>
                     <h1 className='font-primary text-secondary'>Subscription Date End :</h1>
-                    <h1 className='font-secondary text-primary font-medium italic'>{userBilling.expiry_date}</h1>
+                    <h1 className='font-secondary text-primary font-medium italic'>{userBilling?.expiry_date}</h1>
                   </div>
                 </div>
                 <div className='w-full h-full flex flex-col gap-2'>
                   <div className='flex flex-col items-center justify-center'>
-                    <Progress type="circle" percent={userBilling.remaining_day} format={(percent) => `${percent} Days`} size={[100]} />
+                    <Progress type="circle" percent={userBilling?.remaining_day} format={(percent) => `${percent} Days`} size={[100]} />
                   </div>
                   {/* <h1 className='text-xs font-primary text-primary'>Remaining days:</h1> */}
                 </div>

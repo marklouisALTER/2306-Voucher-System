@@ -12,6 +12,7 @@ const Register = require('../controller/Register.js');
 const ChangeSignature = require('../controller/ChangeSignature.js');
 const getVoucher = require('../controller/GetCreditPoints.js');
 const GetSubscriptionPlan = require('../controller/GetSubsciptionPlan.js');
+const AddCredits = require('../controller/AddCredits.js');
 
 // Set up multer for handling file uploads
 const storage = multer.memoryStorage();
@@ -38,5 +39,7 @@ RouterUser.get('/get_credits', getVoucher);
 RouterUser.get('/get_billing', GetSubscriptionPlan);
 
 RouterUser.post('/change_signature', ChangeSignature)
+
+RouterUser.post('/add_credits', AddCredits);
 
 module.exports = RouterUser

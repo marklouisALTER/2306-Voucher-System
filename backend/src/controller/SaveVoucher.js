@@ -24,7 +24,7 @@ const SaveVoucher = expressAsyncHandler(async (req, res) => {
     await userDatabasePool.query(`USE ${userDatabaseName}`);
 
     try {
-        await userDatabasePool.query(`INSERT INTO user_voucher_2306 (voucher, created_at, control_no) 
+        await userDatabasePool.query(`INSERT INTO user_voucher (voucher, created_at, control_no) 
             VALUES (?, ?, ?)`,
         [uploadedBlob, createdAt, control_no])
 

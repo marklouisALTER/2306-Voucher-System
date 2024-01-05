@@ -224,8 +224,8 @@ export const SubscriptionPlan = ({handleForm,toggle,reference_num,handleBack}) =
                     <h1 className='font-primary text-optional font-medium'>Scan the image : </h1>
                     <h1 className='font-secondary text-xs'>You can click the image to preview</h1>
                     <div className='flex flex-col gap-1 items-center justify-center'>
-                    <Image src={qrCode} alt="qrCode" className='w-[15rem] h-[15rem] object-contain'/>
-                    <h1 className='font-secondary text-xl text-primary'>QR SCAN (GCASH)</h1>
+                        <Image src={qrCode} alt="qrCode" className='w-[15rem] h-[15rem] object-contain'/>
+                        <h1 className='font-secondary text-xl text-primary'>QR SCAN (GCASH)</h1>
                     </div>
                 </div>
                 </div>
@@ -233,7 +233,7 @@ export const SubscriptionPlan = ({handleForm,toggle,reference_num,handleBack}) =
                 <div className='flex flex-col items-center justify-center'>
                     <h1 className='text-xl text-primary'>Fill up the form</h1>
                     <div className='mt-5'>
-                    <label htmlFor="registeredAddress" className='font-secondary text-gray-800'>Reference Number :</label>
+                    <label htmlFor="reference_num" className='font-secondary text-gray-800'>Reference Number :</label>
                     <input 
                         type="text"
                         id='reference_num'

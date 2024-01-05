@@ -15,7 +15,7 @@ const getVoucher = expressAsyncHandler(async (req, res) => {
     await userDatabasePool.query(`USE ${userDatabaseName}`);
 
     try{ 
-        await userDatabasePool.query('SELECT available_creditpoints FROM tbl_transaction ORDER BY start_date DESC LIMIT 1', (err, result) => {
+        await userDatabasePool.query('SELECT available_creditpoints FROM tbl+plan ORDER BY start_date DESC LIMIT 1', (err, result) => {
             if(err){
                 return res.status(500).json({success: false, title: "Error", "message": err.message});
             }
