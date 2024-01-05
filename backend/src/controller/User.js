@@ -21,7 +21,7 @@ const Login = expressAsyncHandler(async (req, res) => {
                 const userDatabaseConnection = getUserDatabaseConnection(username);
                 console.log(userDatabaseConnection?.config);
                 
-                userDatabaseConnection.query(`USE user_${username.split('@')[0]}`);
+                userDatabaseConnection.query(`USE 2306_${username.split('@')[0]}`);
                 
                 const token = jwt.sign(
                     {username: username},
