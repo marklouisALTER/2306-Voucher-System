@@ -11,11 +11,12 @@ import axios from 'axios'
 
 export const Dashboard = () => {
 
-  const { isAuthenticated, getUser, logout } = Authentication();
+  const { isAuthenticated, getUser, logout, getToken } = Authentication();
   
   
   const navigate = useNavigate();
   const location = useLocation();
+  const token = getToken()
   const [showCredits, setShowCredits] = useState();
   const [voucherData, setVoucherData] = useState([{
     control_no: '',
@@ -34,7 +35,7 @@ export const Dashboard = () => {
     {
       id: 2,
       title: 'Billing',
-      value: '20',
+      value: '0',
       icon: BiSolidReceipt,
     },
   ]);
@@ -49,7 +50,11 @@ export const Dashboard = () => {
   
   useEffect(() => {
     const getVouchers = async () => {      
-      const response =  await axios.get(`http://localhost:4000/api/get_voucher/${getUser()}`);
+      const response =  await axios.get(`http://localhost:4000/api/get_voucher/${getUser()}`, {
+        headers: {
+          Authorization: token
+        }
+      });
       
       if (response.status === 200) {
         const { data } = response
@@ -76,7 +81,11 @@ export const Dashboard = () => {
       };
     
       try {
-        const response = await axios.get('http://localhost:4000/api/get_credits', credentials);
+        const response = await axios.get('http://localhost:4000/api/get_credits', credentials, {
+          headers: {
+            Authorization: token
+          }
+        });
         const availableCredits = response?.data.data[0];
         const creditPoints = [...cardData];
         creditPoints[1] = { ...creditPoints[1], value: availableCredits.available_creditpoints || "Error"};

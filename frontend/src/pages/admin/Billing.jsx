@@ -1,22 +1,29 @@
 import React, {useEffect, useState} from 'react'
 import { Authentication } from '../../Auth/Authentication'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { Progress } from 'antd'
+import { Progress, Spin } from 'antd'
 import { MdCalendarMonth } from "react-icons/md";
 import { FaBoltLightning } from "react-icons/fa6";
 import { FaCoins } from "react-icons/fa";
 import { PiHandCoinsFill } from "react-icons/pi";
 import { FaNewspaper } from "react-icons/fa";
 import { IoReceiptSharp } from "react-icons/io5";
-import { AddCredits } from '../../components/Plan/AddCredits';
 import axios from 'axios';
+import { TransactionView } from '../../components/Modal/TransactionView';
 export const Billing = () => {
 
-  const { isAuthenticated, getUser, logout } = Authentication();
+  const { isAuthenticated, getUser, logout, getToken } = Authentication();
+  const [showPendingTransaction, setShowPendingTransaction] = useState(false);
   const [userBilling, setUserBilling] = useState();
+  const [transactionRecord, setTransactionRecord] = useState();
+  const [showStatusMessage, setShowStatusMessage] = useState({
+    title: '',
+    message: ''
+  });
+  const [showErrorMessage, setShowErrorMessage] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-
+  const token = getToken();
   useEffect(() => {
     if(!isAuthenticated()){
       navigate('/sign-in', { state: { message: "You must login first", from: location.pathname } });
@@ -29,10 +36,18 @@ export const Billing = () => {
         }
       }
       try{
-        const response = await axios.get('http://localhost:4000/api/get_billing', userInfo);
+        const response = await axios.get('http://localhost:4000/api/get_billing', userInfo, {
+          headers: {
+            Authorization: token
+          }
+        });
         setUserBilling(response.data.data);
       }catch(err){ 
- 
+        setShowStatusMessage({
+          title: err.response.data.title,
+          message: err.response.data.message
+        })
+        setShowErrorMessage(true);
       }
     }
     getSubscriptionPlan();
@@ -42,7 +57,35 @@ export const Billing = () => {
     '100%': '#003554',
   };
 
-  console.log(userBilling)
+  const handleTransactionRecord = async() => {
+    setShowPendingTransaction(true);
+    const userInfo = {
+      params: {
+        email: getUser()
+      }
+    }
+    try{
+      
+      await new Promise(resolve => setTimeout(resolve, 1000));
+
+      const response = await axios.get('http://localhost:4000/api/view_transactions', userInfo, {
+        headers: {
+          Authorization: token
+        }
+      });
+      setTransactionRecord(response.data.data);
+    }catch(err){
+      console.log(err.message);
+      setShowStatusMessage({
+        title: err.response.data.title,
+        message: err.response.data.message
+      })
+      setShowErrorMessage(true);
+    }
+  }
+
+
+  // console.log(transactionRecord)
   return (
     <div className='w-full px-5 md:px-10'>
     <h1 className='pt-20 text-2xl text-primary font-primary'>Account Billing</h1>
@@ -149,13 +192,38 @@ export const Billing = () => {
             <div className='bg-primary p-2'>
               <h1 className='text-white font-secondary'>Transaction History</h1>
             </div>
-                <div className='p-5'>
-                  <h1 className='text-secondary font-primary'>View All the transaction history</h1>
+              <div className='p-5'>
+                <h1 className='text-secondary font-primary'>View All the transaction history</h1>
+                <div className='mt-5'>
+                  <h1 className='text-primary font-secondary'>No pending transaction</h1>
                 </div>
+                <div className='flex items-center justify-end mt-5'>
+                  <button
+                    className='bg-optional text-white font-secondary p-1 px-5 rounded-md
+                    hover:bg-secondary transition-all delay-100 ease-in-out focus:outline-none
+                    focus:ring-4 focus:ring-blue-300'
+                    onClick={handleTransactionRecord}
+                    >
+                    View All
+                  </button>
+                </div>
+                <div className='mt-5'>
+                  <h1 className='text-sm font-secondary text-gray-500'>NOTE</h1>
+                    <li className='text-xs font-secondary text-gray-500 italic p-2'>
+                      If the transaction is rejected the payment that you paid will return to you.
+                      Once you made a transaction you cannot cancel it. If you have problem in your account
+                      contact the customer service.
+                    </li>
+                </div>
+              </div>
           </div>
         </div>
       </div>
     </div>
+    <TransactionView open={showPendingTransaction} close={() => setShowPendingTransaction(false)} transactionInfo={transactionRecord} />
+    {showErrorMessage &&
+      <StatusModal title={showStatusMessage.title} comment={showStatusMessage.message} toggle={() => setShowErrorMessage(false)}/>
+    }
   </div>
   )
 }
